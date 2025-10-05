@@ -1,0 +1,302 @@
+// Country data with GDP-based budgets and characteristics
+export const COUNTRIES = {
+  OM: {
+    code: 'OM',
+    name: 'Oman',
+    flag: '🇴🇲',
+    budget: 50000,
+    gdpPerCapita: 19000,
+    challenges: [
+      'Limited space infrastructure',
+      'Developing aerospace sector',
+      'Need for regional cooperation'
+    ],
+    strengths: [
+      'Strategic geographic location',
+      'Growing tech investment',
+      'Strong government support'
+    ]
+  },
+  US: {
+    code: 'US',
+    name: 'United States',
+    flag: '🇺🇸',
+    budget: 200000,
+    gdpPerCapita: 70000,
+    challenges: [
+      'High operational costs',
+      'Complex regulatory environment'
+    ],
+    strengths: [
+      'Advanced technology',
+      'Established space infrastructure',
+      'Large aerospace industry'
+    ]
+  },
+  IN: {
+    code: 'IN',
+    name: 'India',
+    flag: '🇮🇳',
+    budget: 80000,
+    gdpPerCapita: 2500,
+    challenges: [
+      'Budget constraints',
+      'Growing but competitive market'
+    ],
+    strengths: [
+      'Cost-effective innovation',
+      'Strong STEM education',
+      'Proven launch capabilities'
+    ]
+  },
+  JP: {
+    code: 'JP',
+    name: 'Japan',
+    flag: '🇯🇵',
+    budget: 150000,
+    gdpPerCapita: 42000,
+    challenges: [
+      'Earthquake-prone launch sites',
+      'Limited domestic resources'
+    ],
+    strengths: [
+      'Advanced robotics',
+      'Precision manufacturing',
+      'Strong R&D infrastructure'
+    ]
+  },
+  AE: {
+    code: 'AE',
+    name: 'UAE',
+    flag: '🇦🇪',
+    budget: 120000,
+    gdpPerCapita: 44000,
+    challenges: [
+      'New to space sector',
+      'Limited heritage'
+    ],
+    strengths: [
+      'Significant investment',
+      'Modern facilities',
+      'Ambitious space program'
+    ]
+  }
+};
+
+// Payload types
+export const PAYLOAD_TYPES = {
+  commercial: {
+    id: 'commercial',
+    name: 'Commercial Payload',
+    icon: '💼',
+    description: 'Revenue-generating commercial space missions'
+  },
+  infrastructure: {
+    id: 'infrastructure',
+    name: 'Infrastructure Payload',
+    icon: '🏗️',
+    description: 'Long-term space infrastructure development'
+  }
+};
+
+// Component library organized by payload type
+export const COMPONENTS = {
+  commercial: {
+    telecom: [
+    {
+      id: 'prop_1',
+      name: 'Ion Thruster X200',
+      category: 'propulsion',
+      cost: 15000,
+      si_impact: 8.5,
+      description: 'Efficient electric propulsion system for long-duration missions',
+      specs: { thrust: '200mN', isp: '3000s', power: '2kW' }
+    },
+    {
+      id: 'prop_2',
+      name: 'Chemical Rocket Engine',
+      category: 'propulsion',
+      cost: 25000,
+      si_impact: 5.0,
+      description: 'Traditional high-thrust propulsion',
+      specs: { thrust: '50kN', isp: '450s', weight: '500kg' }
+    },
+    {
+      id: 'prop_3',
+      name: 'Solar Sail',
+      category: 'propulsion',
+      cost: 8000,
+      si_impact: 9.5,
+      description: 'Sustainable propellantless propulsion',
+      specs: { area: '1000m²', acceleration: '0.5mm/s²' }
+    },
+    {
+      id: 'prop_4',
+      name: 'Hall Effect Thruster',
+      category: 'propulsion',
+      cost: 18000,
+      si_impact: 8.0,
+      description: 'Efficient plasma-based propulsion',
+      specs: { thrust: '150mN', isp: '2500s', power: '1.5kW' }
+    }
+  ],
+  communication: [
+    {
+      id: 'comm_1',
+      name: 'X-Band Transceiver',
+      category: 'communication',
+      cost: 12000,
+      si_impact: 7.0,
+      description: 'Standard deep space communication',
+      specs: { frequency: '8GHz', range: '1AU', dataRate: '100kbps' }
+    },
+    {
+      id: 'comm_2',
+      name: 'Laser Communication System',
+      category: 'communication',
+      cost: 20000,
+      si_impact: 9.0,
+      description: 'High-bandwidth optical communication',
+      specs: { range: '10AU', dataRate: '10Mbps', power: '5W' }
+    },
+    {
+      id: 'comm_3',
+      name: 'S-Band Antenna',
+      category: 'communication',
+      cost: 8000,
+      si_impact: 6.5,
+      description: 'Basic LEO communication',
+      specs: { frequency: '2GHz', range: '2000km', dataRate: '10kbps' }
+    },
+    {
+      id: 'comm_4',
+      name: 'Ka-Band System',
+      category: 'communication',
+      cost: 16000,
+      si_impact: 8.5,
+      description: 'High-frequency communication system',
+      specs: { frequency: '32GHz', range: '5AU', dataRate: '500kbps' }
+    }
+  ],
+  power: [
+    {
+      id: 'power_1',
+      name: 'Solar Panel Array',
+      category: 'power',
+      cost: 10000,
+      si_impact: 9.0,
+      description: 'Renewable energy generation',
+      specs: { output: '5kW', efficiency: '30%', area: '20m²' }
+    },
+    {
+      id: 'power_2',
+      name: 'RTG (Nuclear)',
+      category: 'power',
+      cost: 30000,
+      si_impact: 6.0,
+      description: 'Long-lasting nuclear power',
+      specs: { output: '500W', lifetime: '20years', weight: '50kg' }
+    },
+    {
+      id: 'power_3',
+      name: 'Advanced Solar Cells',
+      category: 'power',
+      cost: 15000,
+      si_impact: 9.5,
+      description: 'High-efficiency solar cells',
+      specs: { output: '8kW', efficiency: '40%', area: '15m²' }
+    },
+    {
+      id: 'power_4',
+      name: 'Fuel Cells',
+      category: 'power',
+      cost: 12000,
+      si_impact: 7.5,
+      description: 'Chemical-based power generation',
+      specs: { output: '3kW', duration: '1000hrs', weight: '100kg' }
+    }
+  ],
+  structure: [
+    {
+      id: 'struct_1',
+      name: 'Aluminum Frame',
+      category: 'structure',
+      cost: 8000,
+      si_impact: 6.0,
+      description: 'Traditional spacecraft structure',
+      specs: { weight: '200kg', strength: 'medium', cost: 'low' }
+    },
+    {
+      id: 'struct_2',
+      name: 'Carbon Fiber Composite',
+      category: 'structure',
+      cost: 15000,
+      si_impact: 8.5,
+      description: 'Lightweight high-strength structure',
+      specs: { weight: '100kg', strength: 'high', durability: 'excellent' }
+    },
+    {
+      id: 'struct_3',
+      name: 'Inflatable Module',
+      category: 'structure',
+      cost: 10000,
+      si_impact: 9.0,
+      description: 'Space-efficient deployable structure',
+      specs: { volume: '50m³', weight: '50kg', deployment: 'automatic' }
+    },
+    {
+      id: 'struct_4',
+      name: 'Titanium Alloy Frame',
+      category: 'structure',
+      cost: 18000,
+      si_impact: 7.0,
+      description: 'Durable metal structure',
+      specs: { weight: '150kg', strength: 'very high', corrosion: 'resistant' }
+    }
+  ]
+};
+
+// Screen flow and narrative branches
+export const SCREENS = {
+  landing: { id: 'landing', title: 'Welcome to LEOverse', next: 'country' },
+  country: { id: 'country', title: 'Choose Your Country', next: 'budget' },
+  budget: { id: 'budget', title: 'Budget Allocation', next: 'mission' },
+  mission: { id: 'mission', title: 'Mission Builder', next: 'review' },
+  review: { id: 'review', title: 'Mission Review', next: 'result' },
+  result: { id: 'result', title: 'Mission Results', next: 'leaderboard' },
+  leaderboard: { id: 'leaderboard', title: 'Global Leaderboard', next: null }
+};
+
+// Achievement definitions
+export const ACHIEVEMENTS = {
+  first_mission: {
+    type: 'first_mission_completed',
+    title: 'Space Pioneer',
+    description: 'Complete your first mission',
+    icon: '🚀'
+  },
+  high_si: {
+    type: 'high_sustainability',
+    title: 'Sustainability Champion',
+    description: 'Achieve SI score above 85',
+    icon: '🌍'
+  },
+  budget_master: {
+    type: 'budget_efficient',
+    title: 'Budget Master',
+    description: 'Complete mission under 80% of budget',
+    icon: '💰'
+  },
+  tech_innovator: {
+    type: 'all_advanced_tech',
+    title: 'Tech Innovator',
+    description: 'Use only high-SI components',
+    icon: '⚡'
+  },
+  global_leader: {
+    type: 'top_leaderboard',
+    title: 'Global Leader',
+    description: 'Reach top 10 in leaderboard',
+    icon: '👑'
+  }
+};

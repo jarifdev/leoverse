@@ -1,0 +1,95 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
+import { FaTrophy, FaRobot, FaMapMarkedAlt, FaRocket } from 'react-icons/fa';
+import { useStore } from '@/lib/store';
+
+export default function Sidebar({ onOpenAI }) {
+  const router = useRouter();
+  const { isAuthenticated, missionStatus, selectedCountry } = useStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Determine which mission to resume
+  const getResumePath = () => {
+    if (!selectedCountry) {
+      return '/country';
+    }
+    if (!missionStatus.payload.completed) {
+      return '/mission';
+    }
+    if (!missionStatus.orbital.completed) {
+      return '/orbital-path';
+    }
+    if (!missionStatus.crisis.completed) {
+      return '/crisis';
+    }
+    // All missions completed - show leaderboard
+    return '/leaderboard';
+  };
+
+  if (!mounted || !isAuthenticated) {
+    return null;
+  }
+
+  const navItems = [
+    {
+      id: 'resume',
+      icon: <FaRocket className="text-2xl" />,
+      label: 'Resume Game',
+      onClick: () => router.push(getResumePath()),
+      highlight: true
+    },
+    {
+      id: 'leaderboard',
+      icon: <FaTrophy className="text-2xl" />,
+      label: 'Leaderboard',
+      onClick: () => router.push('/leaderboard')
+    },
+    {
+      id: 'ai',
+      icon: <FaRobot className="text-2xl" />,
+      label: 'LEO AI',
+      onClick: onOpenAI
+    },
+    {
+      id: 'map',
+      icon: <FaMapMarkedAlt className="text-2xl" />,
+      label: 'Global Map',
+      onClick: () => {
+        router.push('/map');
+      }
+    }
+  ];
+
+  return (
+    <aside className="fixed left-0 top-0 h-screen w-20 bg-space-dark border-r border-gray-800 z-40 flex flex-col items-center justify-center gap-6">
+      {navItems.map((item) => (
+        <motion.button
+          key={item.id}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={item.onClick}
+          className={`w-14 h-14 rounded-xl ${
+            item.highlight 
+              ? 'bg-green-600/40 hover:bg-green-600/60 border border-green-500/50 hover:border-green-500/80' 
+              : 'bg-space-blue/30 hover:bg-space-blue/50 border border-blue-500/30 hover:border-blue-500/60'
+          } flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200 group relative`}
+          aria-label={item.label}
+        >
+          {item.icon}
+          
+          {/* Tooltip */}
+          <div className="absolute left-full ml-2 px-3 py-1 bg-space-dark border border-blue-500/30 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            {item.label}
+          </div>
+        </motion.button>
+      ))}
+    </aside>
+  );
+}
