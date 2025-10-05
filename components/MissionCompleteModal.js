@@ -21,14 +21,6 @@ export default function MissionCompleteModal({
       >
         {/* Header */}
         <div className="text-center mb-6">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: 'spring' }}
-            className="inline-block mb-4"
-          >
-            <FaCheckCircle className="text-6xl text-green-400" />
-          </motion.div>
           <h2 className="text-3xl font-bold text-gradient mb-2">{title}</h2>
         </div>
 

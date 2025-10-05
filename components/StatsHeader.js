@@ -30,7 +30,7 @@ export default function StatsHeader() {
   };
 
   return (
-    <header className="fixed top-0 left-20 right-0 h-24 bg-space-dark/95 backdrop-blur-md border-b border-gray-800 z-30 flex items-center px-8">
+    <header className="fixed top-0 left-20 right-0 h-24 backdrop-blur-md border-b border-gray-800 z-30 flex items-center px-8" style={{ backgroundColor: '#15161B' }}>
       <div className="flex items-center justify-between w-full">
         {/* Logo */}
         <div className="flex items-center gap-3">
@@ -49,9 +49,9 @@ export default function StatsHeader() {
           </div>
 
           {/* Score */}
-          <div className="flex flex-col gap-1 px-6 py-3 bg-purple-900/30 rounded-lg border border-purple-500/20">
-            <span className="text-sm text-gray-400">Score</span>
-            <span className="text-2xl font-bold text-purple-300">
+          <div className="flex flex-col gap-1 px-6 py-3 rounded-lg border border-[#00B4D8]/40" style={{ backgroundColor: '#00B4D8' }}>
+            <span className="text-sm text-gray-200">Score</span>
+            <span className="text-2xl font-bold text-white">
               {score || 0}
             </span>
           </div>

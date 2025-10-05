@@ -47,7 +47,6 @@ export default function LeaderboardPage() {
           mission_name: 'Apollo Demo Mission',
           country_code: 'US',
           si_score: 92.5,
-          score: 1850,
           total_budget: 150000,
           components_count: 8,
           created_at: '2025-10-05T10:30:00Z'
@@ -60,7 +59,6 @@ export default function LeaderboardPage() {
           mission_name: 'Artemis Build',
           country_code: 'OM',
           si_score: 88.3,
-          score: 1620,
           total_budget: 45000,
           components_count: 6,
           created_at: '2025-10-05T09:15:00Z'
@@ -73,7 +71,6 @@ export default function LeaderboardPage() {
           mission_name: 'LEO Constellation',
           country_code: 'IN',
           si_score: 85.7,
-          score: 1480,
           total_budget: 75000,
           components_count: 7,
           created_at: '2025-10-05T08:45:00Z'
@@ -130,7 +127,7 @@ export default function LeaderboardPage() {
           >
             <h1 className="section-title mb-4">🏆 Global Leaderboard</h1>
             <p className="text-xl text-gray-300">
-              Top space engineers ranked by Sustainability Index & Score
+              Top space engineers ranked by Sustainability Index
             </p>
           </motion.div>
 
@@ -215,16 +212,12 @@ export default function LeaderboardPage() {
                       </div>
                     </div>
 
-                    {/* Scores */}
+                    {/* SI Score */}
                     <div className="text-right">
-                      <div className="text-2xl font-bold text-primary-400 mb-1">
+                      <div className="text-3xl font-bold text-primary-400 mb-1">
                         {formatSI(parseFloat(entry.si_score || 0))}
                       </div>
-                      <div className="text-xs text-gray-400 mb-2">SI Score</div>
-                      <div className="text-xl font-bold text-green-400">
-                        {parseFloat(entry.score || 0).toFixed(0)}
-                      </div>
-                      <div className="text-xs text-gray-400">Total Score</div>
+                      <div className="text-sm text-gray-400">SI Score</div>
                     </div>
                   </div>
                 </motion.div>
@@ -272,14 +265,14 @@ export default function LeaderboardPage() {
               </div>
               <div>
                 <div className="text-3xl font-bold text-green-400">
-                  {leaderboard.length > 0 ? formatSI(Math.max(...leaderboard.map(e => parseFloat(e.si_score || e.score || 0)))) : 0}
+                  {leaderboard.length > 0 ? formatSI(Math.max(...leaderboard.map(e => parseFloat(e.si_score || 0)))) : 0}
                 </div>
-                <div className="text-sm text-gray-400">Top Score</div>
+                <div className="text-sm text-gray-400">Top SI</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-yellow-400">
                   {leaderboard.length > 0 
-                    ? formatSI(leaderboard.reduce((sum, e) => sum + parseFloat(e.si_score || e.score || 0), 0) / leaderboard.length)
+                    ? formatSI(leaderboard.reduce((sum, e) => sum + parseFloat(e.si_score || 0), 0) / leaderboard.length)
                     : 0}
                 </div>
                 <div className="text-sm text-gray-400">Average SI</div>

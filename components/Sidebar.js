@@ -68,18 +68,19 @@ export default function Sidebar({ onOpenAI }) {
   ];
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-20 bg-space-dark border-r border-gray-800 z-40 flex flex-col items-center justify-center gap-6">
+    <aside className="fixed left-0 top-0 h-screen w-20 border-r border-gray-800 z-40 flex flex-col items-center justify-center gap-6" style={{ backgroundColor: '#15161B' }}>
       {navItems.map((item) => (
         <motion.button
           key={item.id}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           onClick={item.onClick}
-          className={`w-14 h-14 rounded-xl ${
+          className={`w-14 h-14 rounded-xl flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200 group relative ${
             item.highlight 
-              ? 'bg-green-600/40 hover:bg-green-600/60 border border-green-500/50 hover:border-green-500/80' 
-              : 'bg-space-blue/30 hover:bg-space-blue/50 border border-blue-500/30 hover:border-blue-500/60'
-          } flex items-center justify-center text-gray-400 hover:text-white transition-all duration-200 group relative`}
+              ? 'border border-[#0B8FA9]/50 hover:border-[#0B8FA9]/80' 
+              : 'bg-[#283145]/50 hover:bg-[#283145]/70 border border-gray-700/30'
+          }`}
+          style={item.highlight ? { backgroundColor: '#0B8FA9' } : {}}
           aria-label={item.label}
         >
           {item.icon}

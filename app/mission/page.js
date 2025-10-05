@@ -7,8 +7,7 @@ import { useStore } from '@/lib/store';
 import { COMPONENTS } from '@/lib/data';
 import { formatCurrency, formatSI, getSIColor, getBudgetColor } from '@/lib/utils';
 import { missionAPI, leaderboardAPI } from '@/lib/api';
-import { FaTrash, FaRobot, FaTimes, FaTrophy, FaRocket } from 'react-icons/fa';
-import ChatBot from '@/components/ChatBot';
+import { FaTrash, FaTimes, FaTrophy, FaRocket } from 'react-icons/fa';
 import MissionCompleteModal from '@/components/MissionCompleteModal';
 import VideoTransition from '@/components/VideoTransition';
 
@@ -34,7 +33,6 @@ export default function MissionPage() {
   } = useStore();
 
   const [activeCategory, setActiveCategory] = useState(null);
-  const [showChatBot, setShowChatBot] = useState(false);
   const [missionName, setMissionName] = useState('');
   const [loading, setLoading] = useState(false);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
@@ -372,21 +370,6 @@ export default function MissionPage() {
             </div>
           </div>
         </div>
-
-        {/* AI Assistant Button */}
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setShowChatBot(true)}
-          className="fixed bottom-8 right-8 w-16 h-16 bg-gradient-to-r from-primary-600 to-purple-600 rounded-full shadow-2xl flex items-center justify-center text-2xl hover:shadow-primary-500/50 transition-shadow z-40"
-        >
-          <FaRobot />
-        </motion.button>
-
-        {/* ChatBot Modal */}
-        {showChatBot && (
-          <ChatBot onClose={() => setShowChatBot(false)} />
-        )}
 
         {/* Mission Completion Modal */}
         {completionStats && (

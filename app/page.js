@@ -62,9 +62,24 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-black relative">
+      {/* Background Image */}
+      <div 
+        className="fixed inset-0 z-0"
+        style={{
+          backgroundImage: 'url(/animations/img.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.6
+        }}
+      />
+      
+      {/* Dark overlay for better text readability */}
+      <div className="fixed inset-0 z-0 bg-black/50" />
+      
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4">
+      <section className="relative z-10 min-h-screen flex items-center justify-center px-4">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -85,7 +100,7 @@ export default function Home() {
                 onClick={handleStart}
                 className="btn-primary text-lg px-8 py-4"
               >
-                🚀 Launch Your Mission
+                Launch Your Mission
               </motion.button>
               
               <motion.button
@@ -94,7 +109,7 @@ export default function Home() {
                 onClick={() => router.push('/leaderboard')}
                 className="btn-outline text-lg px-8 py-4"
               >
-                🏆 View Leaderboard
+                View Leaderboard
               </motion.button>
             </div>
           </motion.div>
@@ -134,7 +149,7 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-black/30">
+      <section className="relative z-10 py-20 px-4 bg-black/30">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -167,7 +182,7 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-20 px-4">
+      <section className="relative z-10 py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -216,7 +231,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-transparent to-primary-900/20">
+      <section className="relative z-10 py-20 px-4 bg-gradient-to-b from-transparent to-primary-900/20">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -249,18 +264,18 @@ export default function Home() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-6 py-2 bg-space-blue/80 hover:bg-space-blue rounded-lg font-semibold backdrop-blur-sm border border-gray-700"
+                className="btn-primary px-6 py-2"
               >
-                <FaSignInAlt /> Log In
+                Log In
               </motion.button>
             </Link>
             <Link href="/signup">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-6 py-2 bg-primary-600 hover:bg-primary-500 rounded-lg font-semibold"
+                className="btn-primary px-6 py-2"
               >
-                <FaUserPlus /> Sign Up
+                Sign Up
               </motion.button>
             </Link>
           </>
@@ -270,7 +285,7 @@ export default function Home() {
               console.log('Logout clicked');
               useStore.getState().logout();
             }}
-            className="flex items-center gap-2 px-6 py-2 bg-red-600 hover:bg-red-500 rounded-lg font-semibold"
+            className="btn-secondary px-6 py-2"
           >
             Logout
           </button>

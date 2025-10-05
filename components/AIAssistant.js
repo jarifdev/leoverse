@@ -211,16 +211,16 @@ export default function AIAssistant({ isOpen, onClose }) {
                         ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white'
                         : message.isError
                         ? 'bg-red-900/30 text-red-300 border border-red-500/30'
-                        : 'bg-space-blue/50 text-gray-100 border border-blue-500/20'
+                        : 'bg-white text-black border border-blue-500/20'
                     }`}
                   >
                     {message.role === 'assistant' && (
                       <div className="flex items-center gap-2 mb-2">
-                        <FaRobot className="text-blue-400 text-sm" />
-                        <span className="text-xs text-blue-300 font-semibold">AI Assistant</span>
+                        <FaRobot className="text-blue-600 text-sm" />
+                        <span className="text-xs text-blue-600 font-semibold">AI Assistant</span>
                       </div>
                     )}
-                    <p className="text-sm whitespace-pre-wrap break-words">{message.content}</p>
+                    <p className="text-sm whitespace-pre-wrap break-words text-black">{message.content}</p>
                     
                     {/* Display APOD Image if present */}
                     {message.apod && (
@@ -232,12 +232,12 @@ export default function AIAssistant({ isOpen, onClose }) {
                           onClick={() => window.open(message.apod.hdurl || message.apod.url, '_blank')}
                           loading="lazy"
                         />
-                        <div className="p-3 bg-space-dark/50">
-                          <p className="text-xs font-semibold text-blue-300 mb-1">
+                        <div className="p-3 bg-gray-100">
+                          <p className="text-xs font-semibold text-blue-700 mb-1">
                             {message.apod.title}
                           </p>
                           {message.apod.date && (
-                            <p className="text-xs text-gray-400">
+                            <p className="text-xs text-gray-600">
                               📅 {new Date(message.apod.date).toLocaleDateString('en-US', { 
                                 year: 'numeric', 
                                 month: 'long', 
@@ -247,7 +247,7 @@ export default function AIAssistant({ isOpen, onClose }) {
                           )}
                           <button
                             onClick={() => window.open(message.apod.hdurl || message.apod.url, '_blank')}
-                            className="mt-2 text-xs text-blue-400 hover:text-blue-300 flex items-center gap-1"
+                            className="mt-2 text-xs text-blue-600 hover:text-blue-700 flex items-center gap-1"
                           >
                             <span>View HD Image</span>
                             <span className="text-[10px]">🔗</span>
@@ -301,7 +301,7 @@ export default function AIAssistant({ isOpen, onClose }) {
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Ask me anything about space..."
-                  className="flex-1 bg-space-blue/30 border border-blue-500/30 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                  className="flex-1 bg-white border border-blue-500/30 rounded-xl px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                   disabled={isLoading}
                 />
                 <button

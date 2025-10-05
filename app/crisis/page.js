@@ -74,6 +74,7 @@ export default function CrisisManagementPage() {
   const [alertAnimation, setAlertAnimation] = useState(true);
   const [showVideoTransition, setShowVideoTransition] = useState(false);
   const [showExitVideo, setShowExitVideo] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState(null);
 
   useEffect(() => {
     if (!user || !currentMission) {
@@ -183,8 +184,19 @@ export default function CrisisManagementPage() {
         orbitalPath: selectedOrbitalPath?.name || 'Not selected'
       });
 
-      // If "Ignore Warning" was selected, show video before results
+      // Set video based on crisis option selected
+      let videoFile = null;
       if (selectedOption.id === 'ignore') {
+        videoFile = '/animations/5.mp4';
+      } else if (selectedOption.id === 'cleanup') {
+        videoFile = '/animations/6.mp4';
+      } else if (selectedOption.id === 'treaty') {
+        videoFile = '/animations/7.mp4';
+      }
+
+      // Show video before results
+      if (videoFile) {
+        setCurrentVideo(videoFile);
         setShowVideoTransition(true);
       } else {
         setShowResults(true);
@@ -227,9 +239,9 @@ export default function CrisisManagementPage() {
     return <VideoTransition videoSrc="/animations/8.mp4" onComplete={handleExitVideoComplete} />;
   }
 
-  // Show video transition if "Ignore Warning" was selected
-  if (showVideoTransition) {
-    return <VideoTransition videoSrc="/animations/5.mp4" onComplete={handleVideoComplete} />;
+  // Show video transition based on selected crisis option
+  if (showVideoTransition && currentVideo) {
+    return <VideoTransition videoSrc={currentVideo} onComplete={handleVideoComplete} />;
   }
 
   if (showResults && finalResults) {
@@ -254,7 +266,8 @@ export default function CrisisManagementPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="card mb-6 bg-gradient-to-r from-purple-900/30 to-blue-900/30 border-2 border-purple-500/50"
+              className="card mb-6 border-2"
+              style={{ backgroundColor: '#0B8FA9', borderColor: '#0B8FA9' }}
             >
               <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
                 {finalResults.crisisSI >= 0 ? '✅' : '❌'} Crisis Decision: {finalResults.decision}
@@ -399,17 +412,15 @@ export default function CrisisManagementPage() {
             >
               <button
                 onClick={handleExit}
-                className="btn-primary flex items-center justify-center gap-2 py-4"
+                className="btn-secondary flex items-center justify-center gap-2 py-4"
               >
-                <FaRocket />
                 Exit
               </button>
               
               <button
                 onClick={handlePlayAgain}
-                className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-500 hover:to-blue-500 text-white font-bold py-4 px-6 rounded-lg transition-all flex items-center justify-center gap-2"
+                className="btn-primary flex items-center justify-center py-4"
               >
-                <FaRedo />
                 Play Again
               </button>
             </motion.div>
@@ -455,7 +466,7 @@ export default function CrisisManagementPage() {
                     </motion.div>
                     
                     <h1 className="text-5xl font-bold text-red-400 mb-4">
-                      ⚠️ DEBRIS ALERT! ⚠️
+                      DEBRIS ALERT!
                     </h1>
                     
                     <p className="text-2xl text-gray-200 mb-2">
@@ -571,11 +582,12 @@ export default function CrisisManagementPage() {
               disabled={!selectedOption || loading}
               className={`text-xl font-bold py-4 px-12 rounded-lg transition-all ${
                 selectedOption && !loading
-                  ? 'bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 text-white cursor-pointer'
+                  ? 'text-white cursor-pointer'
                   : 'bg-gray-700 text-gray-500 cursor-not-allowed'
               }`}
+              style={selectedOption && !loading ? { background: 'linear-gradient(90deg, #00B4D8 0%, #165295 100%)' } : {}}
             >
-              {loading ? '⏳ Processing Decision...' : '🚀 Execute Crisis Decision'}
+              {loading ? 'Processing Decision...' : 'Execute Crisis Decision'}
             </motion.button>
             
             {selectedOption && (

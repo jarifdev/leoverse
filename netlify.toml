@@ -1,0 +1,36 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirects for client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for CORS and security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# API proxy to avoid CORS issues (OPTIONAL - only if you want to proxy API calls)
+# Uncomment and update the 'to' URL with your actual backend URL
+# [[redirects]]
+#   from = "/api/*"
+#   to = "https://your-backend-api.com/leo/api/:splat"
+#   status = 200
+#   force = false
+#   headers = {X-From = "Netlify"}
+  
+# Environment variables (Set these in Netlify Dashboard instead)
+# Go to: Site Settings → Environment Variables
+# Add: NEXT_PUBLIC_API_URL = https://your-backend-url.com/leo
