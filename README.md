@@ -1,4 +1,4 @@
-# LEOverse Frontend
+# LEOverse
 
 LEOverse is an interactive space mission simulator built with Next.js. It allows users to design space missions, manage budgets, select spacecraft components, and optimize their missions for long-term space sustainability.
 
@@ -529,11 +529,5 @@ This project was developed as part of the NASA International Space Apps Challeng
 
 Add the appropriate license file before distributing or reusing the project outside the hackathon.
 
-## Support
-
-For technical issues:
-
-1. Review the troubleshooting section.
-2. Confirm that the frontend, backend, and database are running.
-3. Review the API endpoint configuration.
-4. Contact the LEOverse development team.
+## Project Link
+https://leoverse.netlify.app/
